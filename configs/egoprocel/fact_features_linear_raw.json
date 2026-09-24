@@ -37,7 +37,7 @@
     "take_key_mode": "video_path",
     "start_sec_column": "start_sec",
     "end_sec_column": "end_sec",
-    "archive_path": "{data_root}/egoprocel_small/fact_npy_features_4fps_full.pt"
+    "archive_path": "{data_root}/egoprocel_small/fact_npy_features_4fps.pt"
   },
   "model": {},
   "ssl": {

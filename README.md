@@ -53,7 +53,7 @@ Encoder weights are hosted on [Hugging Face](https://huggingface.co/FelTris/pjep
 | [lemon_plstitch_block32.pt](https://huggingface.co/FelTris/pjepa/resolve/main/lemon_plstitch_block32.pt) | PL-Stitch, 1 fps | 768 → 768 | 32-token blocks |
 | [assembly101_tsm_block64.pt](https://huggingface.co/FelTris/pjepa/resolve/main/assembly101_tsm_block64.pt) | TSM, 3.75 fps | 2048 → 1408 | 64-token blocks |
 | [assembly101_tsm_clip.pt](https://huggingface.co/FelTris/pjepa/resolve/main/assembly101_tsm_clip.pt) | TSM, 3.75 fps | 2048 → 1408 | Clip-causal (oracle) |
-| [egoprocel_fact_features_clip.pt](https://huggingface.co/FelTris/pjepa/resolve/main/egoprocel_fact_features_clip.pt) | FACT features, 4 fps | 2048 → 1408 | Clip-causal (oracle) |
+| [egoprocel_fact_features_clip.pt](https://huggingface.co/FelTris/pjepa/resolve/main/egoprocel_fact_features_clip.pt) | FACT I3D features, 4 fps | 2048 → 1408 | Clip-causal (oracle) |
 | [egoprocel_pooled_clip.pt](https://huggingface.co/FelTris/pjepa/resolve/main/egoprocel_pooled_clip.pt) | Pooled V-JEPA, 4 fps | 1408 → 1408 | Clip-causal (oracle) |
 
 Download all five encoders alongside the included linear heads:
@@ -88,10 +88,10 @@ No video decoding or feature-extractor installation is needed.
 | Cholec80 / PL-Stitch | 1 | 80 | 0.57 GB |
 | M2CAI16 / PL-Stitch | 1 | 41 | 0.29 GB |
 | Assembly101 / TSM | 3.75 | 265 | 3.37 GB |
-| EgoProceL / FACT features | 4 | 914 | 13.92 GB |
+| EgoProceL / FACT I3D features | 4 | 423 | 8.33 GB |
 | EgoProceL / pooled V-JEPA | 4 | 423 | 5.73 GB |
 
-Download all archives and segment manifests (64.15 GB including annotations):
+Download all archives and segment manifests (58.56 GB including annotations):
 
 ```bash
 hf download FelTris/pjepa_features --repo-type dataset --local-dir data
@@ -116,8 +116,11 @@ export PJEPA_OUTPUT_ROOT=/path/to/run-outputs
 Download to the corresponding roots and keep the bundled linear heads with the
 encoder weights. The [dataset card](https://huggingface.co/datasets/FelTris/pjepa_features)
 documents extractor provenance, exact timing, splits, and checksums. The two
-EgoProceL archives have different coverage; pooled V-JEPA includes a supervised
-pooler. See [input formats and builders](docs/data.md) for details.
+Both EgoProceL archives use the same 337 train / 86 test video IDs, excluding
+three CMU static-camera views. The saved FACT-input P-JEPA checkpoint was
+trained on the original larger mixed-view set. Pooled V-JEPA includes a
+supervised pooler. See the [coverage notes](docs/huggingface_dataset_card.md#egoprocel-camera-coverage)
+and [input formats and builders](docs/data.md) for details.
 
 ## Quick start
 

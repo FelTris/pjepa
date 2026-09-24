@@ -76,7 +76,17 @@
         "student_encoder_block_size": 16,
         "rope_mode": "2d_clip_frame"
       },
-      "oracle_boundaries": true
+      "oracle_boundaries": true,
+      "training_data": {
+        "feature_source": "I3D features distributed with FACT",
+        "train_videos": 731,
+        "selection_videos": 183,
+        "selection_split": "test",
+        "camera_coverage": "Original mixed-view FACT distribution",
+        "current_public_archive_train_videos": 337,
+        "current_public_archive_test_videos": 86,
+        "current_public_archive_matches_original_training": false
+      }
     },
     "egoprocel_pooled_clip": {
       "filename": "egoprocel_pooled_clip.pt",

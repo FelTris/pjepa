@@ -32,13 +32,32 @@ it; the full training/evaluation recipes require access to the code.
 | Cholec80 | Same PL-Stitch | 768 | 1 fps | 80; train 01–40, test 41–80 | 0.57 GB |
 | M2CAI16 | Same PL-Stitch | 768 | 1 fps | 27 train / 14 test | 0.29 GB |
 | Assembly101 | Released TSM features, 8-frame input | 2048 | Stride 8 on a 30-Hz feature timeline: 3.75 fps | 204 train / 61 val; camera C10119 | 3.37 GB |
-| EgoProceL / FACT features | Upstream FACT-provided feature vectors | 2048 | 10-Hz source resampled to nominal 4 fps | 731 train / 183 test | 13.92 GB |
+| EgoProceL / FACT features | I3D features distributed with FACT | 2048 | 10-Hz source resampled to nominal 4 fps | 337 train / 86 test | 8.33 GB |
 | EgoProceL / pooled V-JEPA | V-JEPA 2.1 ViT-g + supervised framewise pooler | 1408 | Nominal 4 fps | 337 train / 86 test | 5.73 GB |
 
-Sizes are decimal GB; total features are approximately **64.13 GB**, plus three
+Sizes are decimal GB; total features are approximately **58.54 GB**, plus three
 small CSV segment manifests. Coverage is the archived experimental subset, not
-a claim to contain every video/view of each original dataset. The two EgoProceL
-families have different coverage and must use their respective manifests.
+a claim to contain every video/view of each original dataset. Both EgoProceL families contain the same 423 video IDs and train/test assignments.
+Use each family's own manifest for its matching annotation timeline.
+
+### EgoProceL camera coverage
+
+Both feature families contain **337 training and 86 test videos**. The FACT
+archive is restricted to the video IDs in the pooled archive. This excludes
+491 CMU-Kitchens static-camera recordings (394 train / 97 test) from the original
+FACT distribution: cameras `7151020` (top), `7151062` (right side), and `8421130`
+(left/top), according to the [upstream camera mapping](https://github.com/Sid2697/EgoProceL-egocentric-procedure-learning/blob/main/annotations/metadata/CMU_Kitchens/misc.py).
+All non-CMU video IDs are retained. Both archives include CMU IDs `7150991`
+and `7150996`, following the original pooled experiment's video selection.
+Counts refer to video files/camera recordings, not independent sessions.
+
+The retained FACT vectors and timestamps are unchanged, and all 116 label IDs
+are preserved. **The released P-JEPA FACT-input checkpoint was trained on the
+original 731-train / 183-test mixed-view split.** The current archive and recipes
+use the smaller matched subset; training on them does not reproduce that
+checkpoint's original training data. The pooled checkpoint's data is unchanged.
+The archives have matching video coverage, but the pooled representation still
+has supervised feature-extractor provenance.
 
 ### Feature provenance and timing
 
@@ -54,10 +73,8 @@ families have different coverage and must use their respective manifests.
   annotation timeline; `times` contains seconds. Do not substitute the video's
   60-fps container rate when interpreting annotation frame numbers. The exact
   upstream extractor checkpoint hash is not recorded in the archive.
-- **FACT features:** repacked from the upstream EgoProceL `.npy` distribution.
+- **FACT features:** I3D vectors repacked from the [FACT EgoProceL `.npy` distribution](https://github.com/ZijiaLewisLu/CVPR2024-FACT).
   FACT names the provider here, not an additional temporal model to run.
-  The exact backbone/checkpoint identity is not recorded in the archive, so
-  2048 dimensions alone do not identify a compatible replacement encoder.
   Features are trimmed to available ground-truth length before resampling.
   Indices follow `floor(arange(0, duration, 0.25) * 10)`: stored timestamps can
   alternate between 0.2- and 0.3-second gaps. Use `times`, not `arange(T)/4`.
@@ -74,7 +91,7 @@ families have different coverage and must use their respective manifests.
 
 ## Download
 
-Download everything into your feature-data root (allow at least 65 GB):
+Download everything into your feature-data root (allow at least 60 GB):
 
 ```bash
 python -m pip install huggingface_hub
@@ -92,7 +109,7 @@ hf download FelTris/pjepa_features --repo-type dataset \
   --local-dir "$PJEPA_DATA_ROOT"
 ```
 
-The corresponding pairs for EgoProceL are `egoprocel_small/fact_npy_features_4fps_full.pt`
+The corresponding pairs for EgoProceL are `egoprocel_small/fact_npy_features_4fps.pt`
 with `egoprocel_annotations/egoprocel_fact_features_segments.csv`, and
 `egoprocel_small/pooled_features_fact.pt` with
 `egoprocel_annotations/egoprocel_segments.csv`. Download every LEMON shard along
@@ -165,9 +182,8 @@ in `phase_class_names` (7 Cholec80 classes; 8 M2CAI16 classes).
 
 Historical EgoProceL configurations use the split named `test` for model/probe
 selection. It must not be described as an untouched final test set. The pooled
-feature extractor's configuration also uses `test` for validation. Different
-feature families, supervised extractors, and dataset coverage must be controlled
-when interpreting downstream comparisons.
+feature extractor's configuration also uses `test` for validation. Feature-extractor supervision and the original training data of each saved
+P-JEPA checkpoint must be accounted for when interpreting comparisons.
 
 ## Sources and terms
 

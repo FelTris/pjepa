@@ -84,10 +84,18 @@ FACT-provided 2048-D features (epoch 400) and pooled V-JEPA 1408-D features
 (epoch 540). Both output 1408 dimensions. Foreground/activity linear heads and
 background ID 0 preserve the existing label convention.
 
+The FACT inputs are I3D features distributed with FACT. The current public
+archive is restricted to the same 423 video IDs as the pooled archive (337 train,
+86 test), retaining all 116 label IDs. It excludes CMU static-camera IDs
+`7151020`, `7151062`, and `8421130` (394 train and 97 test videos).
+
+The released FACT-input P-JEPA checkpoint was trained on the original 731/183
+mixed-view split. Its weights are unchanged. Current training recipes use the
+matched subset and do not reproduce that original training-data coverage.
+
 The pooled inputs come from a frozen V-JEPA 2.1 ViT-g backbone with a supervised
 framewise pooler trained on FACT step labels. They are not raw backbone patch
-averages. The two archived feature families also cover different video subsets
-(914 FACT-feature videos versus 423 pooled-feature videos). See the
+averages. Their archive and checkpoint are unchanged. See the
 [dataset card](huggingface_dataset_card.md) for extraction and timing details.
 
 Historical configurations use the split named `test` as `val_split` during

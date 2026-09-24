@@ -16,7 +16,7 @@ Cholec80/cholec80_pl_stitch_vitb16_1fps.pt
 m2cai/m2cai16_pl_stitch_vitb16_1fps.pt
 assembly101_small/assembly101_tsm_stride8.pt
 assembly101_annotations/assembly101_coarse_segments.csv
-egoprocel_small/fact_npy_features_4fps_full.pt
+egoprocel_small/fact_npy_features_4fps.pt
 egoprocel_small/pooled_features_fact.pt
 egoprocel_annotations/egoprocel_fact_features_segments.csv
 egoprocel_annotations/egoprocel_segments.csv

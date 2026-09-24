@@ -18,7 +18,7 @@ extract features from raw video. All encoder weights are released under MIT.
 | `lemon_plstitch_block32.pt` | LEMON, PL-Stitch, 768-D, 1 fps | 768 | 32-token blocks |
 | `assembly101_tsm_block64.pt` | Assembly101, TSM, 2048-D, 3.75 fps | 1408 | 64-token blocks |
 | `assembly101_tsm_clip.pt` | Assembly101, TSM, 2048-D | 1408 | Clip-causal (oracle) |
-| `egoprocel_fact_features_clip.pt` | EgoProceL, FACT-provided features, 2048-D, 4 fps | 1408 | Clip-causal (oracle) |
+| `egoprocel_fact_features_clip.pt` | EgoProceL, FACT I3D features, 2048-D, 4 fps | 1408 | Clip-causal (oracle) |
 | `egoprocel_pooled_clip.pt` | EgoProceL, pooled V-JEPA features, 1408-D, 4 fps | 1408 | Clip-causal (oracle) |
 
 **Use block-causal models going forward.** Clip-causal models require true
@@ -62,6 +62,12 @@ Precomputed inputs and matching annotations are available at
 The dataset card documents sampling rates, feature extractors, and download instructions.
 
 ## Protocol and validation
+
+The FACT-input P-JEPA encoder was trained on the original mixed-view
+EgoProceL split (731 train / 183 test). The public feature archive now matches
+the pooled archive's 337 train / 86 test video IDs, excluding three CMU static
+camera views. Its saved encoder weights are unchanged; the current archive does
+not reproduce its original training-data coverage.
 
 LEMON encoder selection uses Cholec80 development videos; the test videos are
 held out. Historical EgoProceL runs use a split named `test` for selection, so
