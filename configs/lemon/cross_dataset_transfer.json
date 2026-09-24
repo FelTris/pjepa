@@ -1,0 +1,34 @@
+{
+  "runtime": {
+    "seed": 1538574472,
+    "device": "cuda",
+    "deterministic_cudnn": true
+  },
+  "experiment": {
+    "source_dataset": "cholec80",
+    "target_dataset": "m2cai16",
+    "run_name": "cholec80_to_m2cai16_target_label_free_transfer_gpu_repeat"
+  },
+  "paths": {
+    "cholec80_archive": "{data_root}/Cholec80/cholec80_pl_stitch_vitb16_1fps.pt",
+    "m2cai16_archive": "{data_root}/m2cai/m2cai16_pl_stitch_vitb16_1fps.pt",
+    "pjepa_checkpoint": "{checkpoint_root}/lemon_plstitch_block32.pt",
+    "m2cai16_student_feature_cache": "{output_root}/cache/m2cai16_plstitch_pjepa_lemon_block_causal32_1fps.pt",
+    "raw_linear_checkpoint": "{checkpoint_root}/cholec80_raw_linear.pt",
+    "student_linear_checkpoint": "{checkpoint_root}/cholec80_student_linear.pt",
+    "results_output": "{output_root}/lemon/shared_phase_transfer_gpu_repeat.json"
+  },
+  "features": {
+    "extraction_use_bfloat16": false
+  },
+  "loader": {
+    "batch_size": 1,
+    "num_workers": 0,
+    "pin_memory": true
+  },
+  "roots": {
+    "data_root": "data",
+    "checkpoint_root": "checkpoints/weights",
+    "output_root": "outputs"
+  }
+}

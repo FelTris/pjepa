@@ -1,0 +1,101 @@
+{
+  "action": "train",
+  "runtime": {
+    "seed": 1538574472,
+    "device": "auto",
+    "deterministic_cudnn": true
+  },
+  "experiment": {
+    "dataset": "lemon",
+    "run_name": "lemon_plstitch_1fps_bidirectional_rope1d_cholec80_phase"
+  },
+  "paths": {
+    "lemon_index": "{data_root}/lemon/pl_stitch_vitb16_4fps/sharded/index.pt",
+    "cholec80_archive": "{data_root}/Cholec80/cholec80_pl_stitch_vitb16_1fps.pt",
+    "m2cai16_archive": "{data_root}/m2cai/m2cai16_pl_stitch_vitb16_1fps.pt",
+    "ckpt_dir": "{output_root}/checkpoints"
+  },
+  "data": {
+    "lemon_split": "pretrain",
+    "sample_rate": 4,
+    "max_sequence_len": 4096,
+    "cholec80_protocol": "development"
+  },
+  "model": {
+    "input_dim": 768,
+    "dim": 768,
+    "enc_depth": 4,
+    "enc_heads": 16,
+    "pred_depth": 2,
+    "pred_heads": 16,
+    "drop_path_prob": 0.0
+  },
+  "ssl": {
+    "student_encoder_attention": "bidirectional",
+    "student_encoder_block_size": 32,
+    "rope_mode": "1d_flat",
+    "mask_ratio": 0.6,
+    "ema_momentum": 0.999,
+    "accumulation_steps": 8
+  },
+  "train": {
+    "num_epochs": 100,
+    "batch_size": 1,
+    "lr": 0.0001,
+    "weight_decay": 0.04,
+    "lr_milestones": [
+      60,
+      85
+    ],
+    "lr_gamma": 0.1,
+    "clip_grad_norm": 1.0,
+    "use_bfloat16": true
+  },
+  "validation": {
+    "every": 1,
+    "batch_size": 1,
+    "mask_seed": 20260718,
+    "mask_repeats": 1
+  },
+  "probe": {
+    "every": 10,
+    "seed": 1538574472,
+    "epochs": 30,
+    "extraction_batch_size": 1,
+    "token_batch_size": 4096,
+    "token_num_workers": 0,
+    "optimizer": "adamw",
+    "lr": 0.001,
+    "weight_decay": 0.0,
+    "lr_milestones": [
+      20,
+      26
+    ],
+    "lr_gamma": 0.1,
+    "use_bfloat16": false,
+    "selection_metric": "phase_acc",
+    "run_raw_baseline": true
+  },
+  "loader": {
+    "max_cached_shards": 1,
+    "mmap": true,
+    "lemon": {
+      "num_workers": 2,
+      "pin_memory": true,
+      "prefetch_factor": 2,
+      "bucket_size_multiplier": 50
+    },
+    "surgical_phase": {
+      "num_workers": 0,
+      "pin_memory": true
+    }
+  },
+  "wandb": {
+    "use_wandb": false
+  },
+  "roots": {
+    "data_root": "data",
+    "checkpoint_root": "checkpoints/weights",
+    "output_root": "outputs"
+  }
+}

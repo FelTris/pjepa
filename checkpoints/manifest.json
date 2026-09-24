@@ -1,0 +1,207 @@
+{
+  "version": 1,
+  "encoders": {
+    "lemon_plstitch_block32": {
+      "filename": "lemon_plstitch_block32.pt",
+      "sha256": "e15967fc28eb4e7cbde29eb3491852c07cc8e6b1527e4f2de0c6ebde876098c4",
+      "bytes": 172522460,
+      "source": "ckpts/lemon_plstitch_1fps_block_causal32_rope1d_cholec80_phase/best.pt",
+      "architecture": {
+        "d_in": 768,
+        "d_model": 768,
+        "enc_depth": 4,
+        "pred_depth": 2,
+        "enc_heads": 8,
+        "pred_heads": 8,
+        "drop_path_prob": 0.0,
+        "student_encoder_attention": "block_causal",
+        "student_encoder_block_size": 32,
+        "rope_mode": "1d_flat"
+      },
+      "oracle_boundaries": false,
+      "source_sha256": "bf899fd5a50164022d1f6b41a71fc1acd7d36014208092f1bfe06bf27af8c9c1"
+    },
+    "assembly101_tsm_block64": {
+      "filename": "assembly101_tsm_block64.pt",
+      "sha256": "b8e785d1d2b9167add647ae08c9d4ed54b81f5aea7a050f1a82ec27240da8abe",
+      "bytes": 583007046,
+      "source": "ckpts/assembly101_coarse_tsm_lmdb_block_causal64_rope1d_frameprobe/model_epoch_360_lincombined1.1981.pt",
+      "architecture": {
+        "d_in": 2048,
+        "d_model": 1408,
+        "enc_depth": 4,
+        "pred_depth": 2,
+        "enc_heads": 16,
+        "pred_heads": 16,
+        "drop_path_prob": 0.0,
+        "student_encoder_attention": "block_causal",
+        "student_encoder_block_size": 64,
+        "rope_mode": "1d_flat"
+      },
+      "oracle_boundaries": false
+    },
+    "assembly101_tsm_clip": {
+      "filename": "assembly101_tsm_clip.pt",
+      "sha256": "787987c3ee7ebbb512107d9eb443995faba46bf8ca036c74846ae549d5aff449",
+      "bytes": 583007046,
+      "source": "ckpts/assembly101_coarse_tsm_clip_causal_nodir_0.6/model_epoch_940_lincombined1.3333.pt",
+      "architecture": {
+        "d_in": 2048,
+        "d_model": 1408,
+        "enc_depth": 4,
+        "pred_depth": 2,
+        "enc_heads": 16,
+        "pred_heads": 16,
+        "drop_path_prob": 0.0,
+        "student_encoder_attention": "clip_causal",
+        "student_encoder_block_size": 16,
+        "rope_mode": "2d_clip_frame"
+      },
+      "oracle_boundaries": true
+    },
+    "egoprocel_fact_features_clip": {
+      "filename": "egoprocel_fact_features_clip.pt",
+      "sha256": "4798a91795ce477059e681addf807598c0754edb16256398f59dc8576fbea12e",
+      "bytes": 583007046,
+      "source": "ckpts/egoprocel_fact_npy_4fps_clip_causal_frameprobe/model_epoch_400_lincombined2.2408.pt",
+      "architecture": {
+        "d_in": 2048,
+        "d_model": 1408,
+        "enc_depth": 4,
+        "pred_depth": 2,
+        "enc_heads": 16,
+        "pred_heads": 16,
+        "drop_path_prob": 0.0,
+        "student_encoder_attention": "clip_causal",
+        "student_encoder_block_size": 16,
+        "rope_mode": "2d_clip_frame"
+      },
+      "oracle_boundaries": true
+    },
+    "egoprocel_pooled_clip": {
+      "filename": "egoprocel_pooled_clip.pt",
+      "sha256": "9c6cb8350e4dae049f2e69833130f4d7082cfcb490444f8999c32a78c2416291",
+      "bytes": 579397446,
+      "source": "ckpts/egoprocel_pooled_fact_clip_causal_frameprobe/model_epoch_540_lincombined2.7409.pt",
+      "architecture": {
+        "d_in": 1408,
+        "d_model": 1408,
+        "enc_depth": 4,
+        "pred_depth": 2,
+        "enc_heads": 16,
+        "pred_heads": 16,
+        "drop_path_prob": 0.0,
+        "student_encoder_attention": "clip_causal",
+        "student_encoder_block_size": 16,
+        "rope_mode": "2d_clip_frame"
+      },
+      "oracle_boundaries": true
+    }
+  },
+  "heads": {
+    "cholec80_raw_linear": {
+      "filename": "cholec80_raw_linear.pt",
+      "sha256": "fd46531306a102deae7822f7235cfb1396a9080b0f20a4012dd6218d3e56864f",
+      "kind": "linear",
+      "encoder": "raw",
+      "config": null,
+      "architecture": {
+        "in_dim": 768,
+        "num_classes": 7
+      },
+      "phase_class_names": [
+        "Preparation",
+        "CalotTriangleDissection",
+        "ClippingCutting",
+        "GallbladderDissection",
+        "GallbladderPackaging",
+        "CleaningCoagulation",
+        "GallbladderRetraction"
+      ],
+      "dataset": "cholec80",
+      "source_sha256": "889bceb3e0ec1c5acf605319224a35b0b58d215c774351a6e7ff206f33ce2450"
+    },
+    "cholec80_student_linear": {
+      "filename": "cholec80_student_linear.pt",
+      "sha256": "af57991915dd08ad0cd1f041ed67f19db911e9ff3e4c9153f817c5ca89448c2e",
+      "kind": "linear",
+      "encoder": "lemon_plstitch_block32",
+      "config": null,
+      "architecture": {
+        "in_dim": 768,
+        "num_classes": 7
+      },
+      "phase_class_names": [
+        "Preparation",
+        "CalotTriangleDissection",
+        "ClippingCutting",
+        "GallbladderDissection",
+        "GallbladderPackaging",
+        "CleaningCoagulation",
+        "GallbladderRetraction"
+      ],
+      "dataset": "cholec80",
+      "source_sha256": "6cb4fca766b390b875758ef9e13654faf3f37985676c63ae129311006856bc1a"
+    },
+    "m2cai16_raw_linear": {
+      "filename": "m2cai16_raw_linear.pt",
+      "sha256": "9ef42414cddba72f0575e742168771d5e4aad911c0cb9aa06bab9c725fa60abf",
+      "kind": "linear",
+      "encoder": "raw",
+      "config": null,
+      "source": "results/m2cai16/official/raw_plstitch_linear_full_context.pt",
+      "architecture": {
+        "in_dim": 768,
+        "num_classes": 8
+      },
+      "phase_class_names": [
+        "TrocarPlacement",
+        "Preparation",
+        "CalotTriangleDissection",
+        "ClippingCutting",
+        "GallbladderDissection",
+        "GallbladderPackaging",
+        "CleaningCoagulation",
+        "GallbladderRetraction"
+      ],
+      "dataset": "m2cai16",
+      "source_sha256": "22158094b990b162bb1f56ea8a1cb722924a0fc15115494899ed1b7f04163d53"
+    },
+    "m2cai16_student_linear": {
+      "filename": "m2cai16_student_linear.pt",
+      "sha256": "798d3946f4dff4147892ba8d6ad407166b6d95a9445880139b5036fee76c0662",
+      "kind": "linear",
+      "encoder": "lemon_plstitch_block32",
+      "config": null,
+      "source": "results/m2cai16/official/pjepa_linear_full_context.pt",
+      "architecture": {
+        "in_dim": 768,
+        "num_classes": 8
+      },
+      "phase_class_names": [
+        "TrocarPlacement",
+        "Preparation",
+        "CalotTriangleDissection",
+        "ClippingCutting",
+        "GallbladderDissection",
+        "GallbladderPackaging",
+        "CleaningCoagulation",
+        "GallbladderRetraction"
+      ],
+      "dataset": "m2cai16",
+      "source_sha256": "bf46b4f61be6bfc461f6060fdee8417d3bef9aca4575b05aabe4999470559f29"
+    },
+    "assembly101_oracle_clip_ltcausal_linear": {
+      "filename": "assembly101_oracle_clip_ltcausal_linear.pt",
+      "sha256": "9fe519e357837b271f93225e0ea202b905cf911f1ee7824fbbba13bff0c4abe7",
+      "kind": "linear",
+      "encoder": "assembly101_tsm_clip",
+      "config": "assembly101/oracle_clip_causal_ltcausal.json",
+      "architecture": {
+        "in_dim": 1408,
+        "num_classes": 202
+      },
+      "dataset": "assembly101"
+    }
+  }
+}

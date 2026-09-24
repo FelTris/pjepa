@@ -1,0 +1,110 @@
+{
+  "runtime": {
+    "seed": 1538574472,
+    "device": "auto",
+    "deterministic_cudnn": true
+  },
+  "experiment": {
+    "dataset": "egoprocel",
+    "split": "fact_step_id",
+    "run_name": "oracle_fact_features_train"
+  },
+  "paths": {
+    "labels_root": "{data_root}/egoprocel_annotations",
+    "features_root": "{data_root}",
+    "output_root": "{output_root}"
+  },
+  "data": {
+    "feature_source": "fact_npy_4fps_archive",
+    "features_dim": 1408,
+    "input_features_dim": 2048,
+    "target_fps": 4.0,
+    "source_fps": 10.0,
+    "num_classes": null,
+    "sample_rate": 1,
+    "max_take_len": 20,
+    "max_background_segment_tokens": 1024,
+    "val_max_take_len": null,
+    "train_manifest": "egoprocel_fact_features_segments.csv",
+    "val_manifest": "egoprocel_fact_features_segments.csv",
+    "train_split": "train",
+    "val_split": "test",
+    "label_column": "fact_step_id",
+    "video_path_column": "video_path",
+    "split_column": "official_split",
+    "sample_id_column": "sample_uid",
+    "action_type_column": "task_name",
+    "take_key_mode": "video_path",
+    "start_sec_column": "start_sec",
+    "end_sec_column": "end_sec",
+    "archive_path": "{data_root}/egoprocel_small/fact_npy_features_4fps_full.pt"
+  },
+  "model": {},
+  "ssl": {
+    "enc_depth": 4,
+    "pred_depth": 2,
+    "ema_momentum": 0.999,
+    "accumulation_steps": 2,
+    "student_encoder_attention": "clip_causal",
+    "mask_ratio": 0.8,
+    "directional_mask_prob": 0.0,
+    "directional_future_mask_ratio": 0.75,
+    "directional_min_context_clips": 1,
+    "directional_min_future_clips": 1,
+    "enc_heads": 16,
+    "pred_heads": 16,
+    "student_encoder_block_size": 16,
+    "rope_mode": "2d_clip_frame"
+  },
+  "train": {
+    "num_epochs": 1000,
+    "batch_size": 4,
+    "val_batch_size": 4,
+    "lr": 0.0001,
+    "lr_milestones": [
+      500
+    ],
+    "lr_gamma": 0.1,
+    "val_every": 20,
+    "ckpt_metric": "lin_frame_acc_no_bg"
+  },
+  "probe": {
+    "mode": "linear",
+    "background_label_id": 0,
+    "linear_head_mode": "foreground_activity",
+    "foreground_loss_weight": 1.0,
+    "activity_loss_weight": 1.0,
+    "train_max_take_len": null,
+    "linear_probe_pool": false,
+    "every": 20,
+    "epochs": 30,
+    "lr_lin": 0.001,
+    "lin_lr_milestones": [
+      5,
+      15
+    ],
+    "weight_decay": 0.0
+  },
+  "wandb": {
+    "use_wandb": false
+  },
+  "loader": {
+    "backend": "assembly101_frame_flat_archive",
+    "cache_in_memory": true,
+    "preload_in_parent": true
+  },
+  "init": {},
+  "evaluation": {
+    "temporal_probe_kind": "linear",
+    "linear_only": true,
+    "select_metric": "lin_combined",
+    "probe_feature_source": "student",
+    "batch_size": 4,
+    "val_batch_size": 1
+  },
+  "roots": {
+    "data_root": "data",
+    "checkpoint_root": "checkpoints/weights",
+    "output_root": "outputs"
+  }
+}

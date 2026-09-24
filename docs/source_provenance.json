@@ -1,0 +1,288 @@
+[
+  {
+    "source": "pjepa/loaders/lemon_sharded.py",
+    "sha256": "4e1f7e10314ee7cd6b9ede67c2dc91e0d9320f27f2dc4d9d0d5ede236e37ab85",
+    "release": "src/pjepa/data/lemon_sharded.py"
+  },
+  {
+    "source": "pjepa/loaders/surgical_phase_plstitch.py",
+    "sha256": "f2b08728aba790d84769d1dcf2de2b2707f8743d4a0ff5c47449fbc3ae983ab2",
+    "release": "src/pjepa/data/surgical_phase_plstitch.py"
+  },
+  {
+    "source": "pjepa/loaders/packed_assembly101_frame_archive.py",
+    "sha256": "56bcc30d52c75c2196130dc95d1aea87b2c853938d1060b3488d65c05a7256ad",
+    "release": "src/pjepa/data/packed_assembly101_frame_archive.py"
+  },
+  {
+    "source": "pjepa/loaders/assembly101_frame_take.py",
+    "sha256": "f5acb48cf0f55264c2b8a95ba906a755dfa1fb458d26cfc9bdc82d3012b76516",
+    "release": "src/pjepa/data/assembly101_frame_take.py"
+  },
+  {
+    "source": "pjepa/loaders/assembly101_keys.py",
+    "sha256": "5a2a134cce139cf8e5cc4f91256d7b3f287593efcc5d152a721233a4f4e70a77",
+    "release": "src/pjepa/data/assembly101_keys.py"
+  },
+  {
+    "source": "pjepa/loaders/common.py",
+    "sha256": "123a32294ba7775d46ac7f784bfeba14d1058e511792102049555359169a9958",
+    "release": "src/pjepa/data/common.py"
+  },
+  {
+    "source": "pjepa/loaders/assembly101_lmdb_take.py",
+    "sha256": "b9759d9c58ce8f8c7aba4a340cbd27f3f859cdea102733bedeac5ed1e981541d",
+    "release": "src/pjepa/data/assembly101_lmdb_take.py"
+  },
+  {
+    "source": "pjepa/loaders/assembly101_ltcontext_lmdb_take.py",
+    "sha256": "6351994151eb9d80a7e9ffc00f42b4f2a0f5f2279147d8c1edd32569a0d4e7de",
+    "release": "src/pjepa/data/assembly101_ltcontext_lmdb_take.py"
+  },
+  {
+    "source": "pjepa/model/feature_vjepa_rope.py",
+    "sha256": "bd574fe8d63e060fb5fa9b0281363a3bfa7e4be4d5036a913816cd464e79d25e",
+    "release": "src/pjepa/models/feature_vjepa_rope.py"
+  },
+  {
+    "source": "pjepa/model/mask.py",
+    "sha256": "721a58ab712ea336d5255fc45d404a4435f5cec8f000efb5e08cd22c05a44f93",
+    "release": "src/pjepa/models/mask.py"
+  },
+  {
+    "source": "pjepa/model/surgical_phase_linear_probe.py",
+    "sha256": "f56da2df3fd536ed82f525f2f8e5940c3477cb936ac6522111f0bbd3574e728c",
+    "release": "src/pjepa/probes/surgical_phase_linear_probe.py"
+  },
+  {
+    "source": "pjepa/model/surgical_phase_ltcontext_probe.py",
+    "sha256": "0a93bdc313d1ca0b274284deb5a0b01c3e19dbb3b6b265cc8ba8e0afae254510",
+    "release": "src/pjepa/data/surgical_feature_cache.py",
+    "scope": "Feature cache construction and validation only; temporal probe code excluded."
+  },
+  {
+    "source": "pjepa/model/ltcontext_probe.py",
+    "sha256": "9953d13b1408cd9f28dc9ef7ced44e5a5c1219604682bf0f971054cde46b7724",
+    "release": "src/pjepa/probes/ltcontext_probe.py"
+  },
+  {
+    "source": "pjepa/model/causal_ltcontext/probe.py",
+    "sha256": "dbf2ce79bbe6b38242e12c4ebcd0bfa3e11e36cbb48e5ada330a221d811b9fbe",
+    "release": "src/pjepa/probes/causal_ltcontext.py"
+  },
+  {
+    "source": "pjepa/training/lemon_ssl.py",
+    "sha256": "fb25575db1eaf4215378a7984e80628076303caf3df6b4f92846a416f433a22f",
+    "release": "src/pjepa/cli/lemon_ssl.py"
+  },
+  {
+    "source": "pjepa/training/surgical_phase_linear_probe.py",
+    "sha256": "faec2d58535f8afca29827b3168d116ed3cb05b08818316b95b30b6ace75f2d2",
+    "release": "src/pjepa/cli/surgical_phase_linear_probe.py"
+  },
+  {
+    "source": "pjepa/training/surgical_phase_cross_dataset_eval.py",
+    "sha256": "1e1bc40a5ed3fd3711e5079f40b9a49a8747acf7b490889700a2c8ac10661c51",
+    "release": "src/pjepa/cli/surgical_phase_cross_dataset_eval.py"
+  },
+  {
+    "source": "pjepa/training/surgical_phase_context_sweep.py",
+    "sha256": "079ebe1eed2f08b910db21b1503756d75ea3b41c9338d6a52b343d657b811237",
+    "release": "src/pjepa/cli/surgical_phase_context_sweep.py"
+  },
+  {
+    "source": "pjepa/training/surgical_phase_order_ablation.py",
+    "sha256": "7d4c8f7613e1a4885d0fc7cc9095b6b3377cbf62fb42d304fe6794c8a1346c96",
+    "release": "src/pjepa/cli/surgical_phase_order_ablation.py"
+  },
+  {
+    "source": "pjepa/training/assembly101_ssl.py",
+    "sha256": "ee04273d7cc193fdfd6b6687008a683433880145fbd17123ced35bbe965033dd",
+    "release": "src/pjepa/cli/feature_experiment.py"
+  },
+  {
+    "source": "pjepa/util/runtime.py",
+    "sha256": "306ad908e0b770123836c79bd1196b8ae9d8267a7949e4fb0c822b28f20c6760",
+    "release": "src/pjepa/utils/runtime.py"
+  },
+  {
+    "source": "pjepa/util/logging.py",
+    "sha256": "b0840b1f06408b4e8af4fb56fab6d9a98ff5ad607c03d6f24fe5b11b9c38c16b",
+    "release": "src/pjepa/utils/logging.py"
+  },
+  {
+    "source": "pjepa/util/segmentation_metrics.py",
+    "sha256": "177760d735213951d7d6938c3675853a920b598d273365c833829b6fa197a99c",
+    "release": "src/pjepa/utils/segmentation_metrics.py"
+  },
+  {
+    "source": "pjepa/scripts/build_assembly101_lmdb_archive.py",
+    "sha256": "52764466a33be834291d227ab65ed6b81ea0598994a444556cc77b4b2b0a1d27",
+    "release": "src/pjepa/builders/build_assembly101_lmdb_archive.py"
+  },
+  {
+    "source": "pjepa/scripts/build_egoprocel_fact_feature_manifest.py",
+    "sha256": "93ac7c9a04d7eb05854812ec188f23757d36cd96c892f65665c02c7d9ab10114",
+    "release": "src/pjepa/builders/build_egoprocel_fact_feature_manifest.py"
+  },
+  {
+    "source": "pjepa/scripts/build_egoprocel_fact_npy_archive.py",
+    "sha256": "86c95d26715d9316ddff3a78671e45d7f2a679efa3ecc7b6314d70ed5f1d0b5f",
+    "release": "src/pjepa/builders/build_egoprocel_fact_npy_archive.py"
+  },
+  {
+    "source": "pjepa/scripts/build_assembly101_frame_archive.py",
+    "sha256": "7f8b54c95aa8cb5cd84769086d1f03322960b2cc7ba35825f12b881029914377",
+    "release": "src/pjepa/builders/build_assembly101_frame_archive.py"
+  },
+  {
+    "source": "external_vjepa2/src/models/feature_vjepa.py",
+    "sha256": "6f8fc46e0c9d718c4402f4b00e8d935ca61f40a9f5d712f9923f66a27e4d850f",
+    "release": "src/pjepa/models/feature_base.py"
+  },
+  {
+    "source": "external_vjepa2/src/models/utils/modules_2d.py",
+    "sha256": "23bbd1643b54d301b21aaafa0e42e99dc8562c4dc8e3adf300d7fdd013b3060d",
+    "release": "src/pjepa/models/modules_2d.py"
+  },
+  {
+    "source": "external_vjepa2/src/models/utils/ema.py",
+    "sha256": "689ba6beec704e08eca6c30b1b601e0809389d5b9e1bc037ab806d87dbca5f5e",
+    "release": "src/pjepa/models/ema.py"
+  },
+  {
+    "source": "LTContext/ltc/model/ltcontext.py",
+    "sha256": "489d9b06b517a016c4ae544d33f8f1a19c067f43a56a80737cadce6b8924e7f0",
+    "release": "src/pjepa/_vendor/ltcontext/ltcontext.py"
+  },
+  {
+    "source": "LTContext/ltc/model/multi_head_attention.py",
+    "sha256": "bcf2246afd579e31803e2ebae7245042b7f5ee6b5eb2ad0667d4fc404562c19d",
+    "release": "src/pjepa/_vendor/ltcontext/multi_head_attention.py"
+  },
+  {
+    "source": "LTContext/ltc/model/attention_utils.py",
+    "sha256": "dd7b6d6b2c86414f906239140aae1e02d9e3d07d5ab173dcf97c58c964b00cda",
+    "release": "src/pjepa/_vendor/ltcontext/attention_utils.py"
+  },
+  {
+    "source": "lemon_dataset/pack_pl_stitch_archives.py",
+    "sha256": "1f4e9d4e753fb1bd3a1368bce9968a0d589fdd4c3d7bab3d45f45d085f4c9b46",
+    "release": "src/pjepa/builders/surgical/pack_pl_stitch_archives.py"
+  },
+  {
+    "source": "lemon_dataset/pack_surgical_phase_archive.py",
+    "sha256": "cd2bab7646742ca7e5605ef8fb3665627787d82a58b6cda104c0ae2dcf465c7b",
+    "release": "src/pjepa/builders/surgical/pack_surgical_phase_archive.py"
+  },
+  {
+    "source": "lemon_dataset/common.py",
+    "sha256": "5df1e43f94ef6b585595e2a94dce1e770064d63a4f981cf0e1605f7cef49545e",
+    "release": "src/pjepa/builders/surgical/common.py"
+  },
+  {
+    "source": "lemon_dataset/__init__.py",
+    "sha256": "607d514604ac2c1c9f3f4be9e0e422698c52db6f9e49c35abe05bbacad12b963",
+    "release": "src/pjepa/builders/surgical/__init__.py"
+  },
+  {
+    "source": "pjepa/configs/assembly101_ssl_train_tsm_lmdb_block_causal64_rope1d_remote.json",
+    "sha256": "50ce7033049ce7ddd0c8086c851a873d2fe600f7990e3e932c6fe8f11fdeb51f",
+    "release": "configs/assembly101/block_causal_train.json"
+  },
+  {
+    "source": "pjepa/configs/generated/assembly101_causal_ltcontext/original_pjepa_segment_causal.json",
+    "sha256": "db13f338d39cc2ab85293165850de9b4c8980e26d660f1256278d14763d7fdcb",
+    "release": "configs/assembly101/oracle_clip_causal_ltcausal.json"
+  },
+  {
+    "source": "pjepa/configs/assembly101_ssl_eval_tsm_archive.json",
+    "sha256": "f4f449f5ee951f6acfacb3b5e9885099f69aecd6ff3cbf087516c80e813f6944",
+    "release": "configs/assembly101/oracle_clip_causal_linear.json"
+  },
+  {
+    "source": "pjepa/configs/egoprocel_ssl_train_fact_npy.json",
+    "sha256": "72ff4f76b2ea9a4b7d5d3994e11dcca1356b4efcde53ba1019f7390eb98082d6",
+    "release": "configs/egoprocel/oracle_fact_features_train.json"
+  },
+  {
+    "source": "pjepa/configs/egoprocel_ssl_train_pooled_fact.json",
+    "sha256": "d839d0ab8a0664dd531df47f693ff0e466ef98698d3f4da19e62de3daa406a1d",
+    "release": "configs/egoprocel/oracle_pooled_train.json"
+  },
+  {
+    "source": "pjepa/configs/egoprocel_ssl_eval_fact_npy_student.json",
+    "sha256": "9986853a240dcbb09ef61a00d8c02f1317138e67e42647b5dafa01b75f52e89e",
+    "release": "configs/egoprocel/oracle_fact_features_linear.json"
+  },
+  {
+    "source": "pjepa/configs/egoprocel_ssl_eval_pooled_fact.json",
+    "sha256": "00f5e5850ed51543e44164bae01aead26f5fea90d542572330f827542bd57105",
+    "release": "configs/egoprocel/oracle_pooled_linear.json"
+  },
+  {
+    "source": "pjepa/model/ssl_features_remote.py",
+    "sha256": "c3c66ed101603025f14f750c3254dc1d17b7f00299c4cfafd9fc3cdbed15d2e2",
+    "release": "src/pjepa/training/feature_ssl.py"
+  },
+  {
+    "source": "pjepa/model/ssl_features_remote.py",
+    "sha256": "c3c66ed101603025f14f750c3254dc1d17b7f00299c4cfafd9fc3cdbed15d2e2",
+    "release": "src/pjepa/training/probe_fit.py"
+  },
+  {
+    "source": "pjepa/model/ssl_features_remote.py",
+    "sha256": "c3c66ed101603025f14f750c3254dc1d17b7f00299c4cfafd9fc3cdbed15d2e2",
+    "release": "src/pjepa/training/ssl_loop.py"
+  },
+  {
+    "source": "pjepa/model/ssl_features_remote.py",
+    "sha256": "c3c66ed101603025f14f750c3254dc1d17b7f00299c4cfafd9fc3cdbed15d2e2",
+    "release": "src/pjepa/training/tracking.py"
+  },
+  {
+    "source": "pjepa/model/ssl_features_remote.py",
+    "sha256": "c3c66ed101603025f14f750c3254dc1d17b7f00299c4cfafd9fc3cdbed15d2e2",
+    "release": "src/pjepa/data/feature_batches.py"
+  },
+  {
+    "source": "pjepa/model/ssl_features_remote.py",
+    "sha256": "c3c66ed101603025f14f750c3254dc1d17b7f00299c4cfafd9fc3cdbed15d2e2",
+    "release": "src/pjepa/probes/operations.py"
+  },
+  {
+    "source": "pjepa/model/ssl_features_remote.py",
+    "sha256": "c3c66ed101603025f14f750c3254dc1d17b7f00299c4cfafd9fc3cdbed15d2e2",
+    "release": "src/pjepa/evaluation/probe_epoch.py"
+  },
+  {
+    "source": "pjepa/model/ssl_features_remote.py",
+    "sha256": "c3c66ed101603025f14f750c3254dc1d17b7f00299c4cfafd9fc3cdbed15d2e2",
+    "release": "src/pjepa/evaluation/saved_probes.py"
+  },
+  {
+    "source": "pjepa/model/ssl_features_remote.py",
+    "sha256": "c3c66ed101603025f14f750c3254dc1d17b7f00299c4cfafd9fc3cdbed15d2e2",
+    "release": "src/pjepa/evaluation/selection.py"
+  },
+  {
+    "source": "pjepa/training/assembly101_ssl.py",
+    "sha256": "ee04273d7cc193fdfd6b6687008a683433880145fbd17123ced35bbe965033dd",
+    "release": "src/pjepa/training/experiment.py"
+  },
+  {
+    "source": "pjepa/training/assembly101_ssl.py",
+    "sha256": "ee04273d7cc193fdfd6b6687008a683433880145fbd17123ced35bbe965033dd",
+    "release": "src/pjepa/data/experiments.py"
+  },
+  {
+    "source": "pjepa/training/lemon_ssl.py",
+    "sha256": "fb25575db1eaf4215378a7984e80628076303caf3df6b4f92846a416f433a22f",
+    "release": "src/pjepa/training/lemon.py"
+  },
+  {
+    "source": "pjepa/training/lemon_ssl.py",
+    "sha256": "fb25575db1eaf4215378a7984e80628076303caf3df6b4f92846a416f433a22f",
+    "release": "src/pjepa/training/lemon_support.py"
+  }
+]

@@ -1,0 +1,128 @@
+{
+  "runtime": {
+    "seed": 1538574472,
+    "device": "auto",
+    "deterministic_cudnn": true
+  },
+  "experiment": {
+    "dataset": "assembly101",
+    "split": "coarse_action_id",
+    "run_name": "oracle_clip_causal_linear"
+  },
+  "paths": {
+    "labels_root": "{data_root}/assembly101_annotations",
+    "features_root": "{data_root}",
+    "output_root": "{output_root}"
+  },
+  "data": {
+    "feature_source": "tsm_lmdb_stride8_archive",
+    "features_dim": 1408,
+    "input_features_dim": 2048,
+    "num_classes": null,
+    "sample_rate": 1,
+    "frame_stride": 8,
+    "target_fps": 3.75,
+    "source_fps": 30.0,
+    "archive_path": "{data_root}/assembly101_small/assembly101_tsm_stride8.pt",
+    "max_take_len": null,
+    "val_max_take_len": null,
+    "train_manifest": "assembly101_coarse_segments.csv",
+    "val_manifest": "assembly101_coarse_segments.csv",
+    "train_split": "train",
+    "val_split": "val",
+    "label_column": "action_id",
+    "video_path_column": "video_path",
+    "split_column": "official_split",
+    "sample_id_column": "sample_uid",
+    "action_type_column": "action_type",
+    "take_key_mode": "action_type_video_view",
+    "start_sec_column": "start_sec",
+    "end_sec_column": "end_sec"
+  },
+  "model": {},
+  "ssl": {
+    "enc_depth": 4,
+    "pred_depth": 2,
+    "ema_momentum": 0.999,
+    "student_encoder_attention": "clip_causal",
+    "mask_ratio": 0.6,
+    "directional_mask_prob": 0.0,
+    "directional_future_mask_ratio": 0.75,
+    "directional_min_context_clips": 1,
+    "directional_min_future_clips": 1,
+    "enc_heads": 16,
+    "pred_heads": 16,
+    "student_encoder_block_size": 16,
+    "rope_mode": "2d_clip_frame"
+  },
+  "train": {
+    "lr": 0.0005,
+    "batch_size": 16,
+    "val_batch_size": 16
+  },
+  "probe": {
+    "mode": "linear",
+    "train_max_take_len": null,
+    "linear_probe_pool": false,
+    "epochs": 30,
+    "lr_lin": 0.001,
+    "lr_ltcontext": 0.00025,
+    "weight_decay": 0.0,
+    "lin_lr_milestones": [
+      5,
+      15
+    ],
+    "ltcontext_lr_milestones": [
+      10,
+      20
+    ],
+    "lr_gamma": 0.1,
+    "background_label_id": -100,
+    "linear_head_mode": "single",
+    "activity_loss_weight": 1.0,
+    "foreground_loss_weight": 1.0,
+    "ltcontext": {
+      "num_layers": 9,
+      "num_stages": 4,
+      "model_dim": 128,
+      "windowed_attn_w": 16,
+      "long_term_attn_g": 64,
+      "conv_dilation_factor": 4,
+      "dim_reduction": 1.0,
+      "channel_masking_prob": 0.3,
+      "dropout_prob": 0.2,
+      "use_instance_norm": true,
+      "num_attn_heads": 1,
+      "attention_dropout": 0.2,
+      "ce_loss_weight": 1.0,
+      "mse_loss_weight": 0.17,
+      "mse_loss_clip_val": 16.0
+    }
+  },
+  "evaluation": {
+    "batch_size": 1,
+    "val_batch_size": 1,
+    "temporal_probe_kind": "linear",
+    "probe_feature_source": "student",
+    "linear_only": true,
+    "select_metric": "lin_combined",
+    "train_subset_fraction": 1.0,
+    "ensure_class_coverage": true
+  },
+  "init": {
+    "checkpoint": "{checkpoint_root}/assembly101_tsm_clip.pt"
+  },
+  "wandb": {
+    "use_wandb": false
+  },
+  "loader": {
+    "backend": "assembly101_frame_flat_archive",
+    "cache_in_memory": true,
+    "preload_in_parent": true
+  },
+  "roots": {
+    "data_root": "data",
+    "checkpoint_root": "checkpoints/weights",
+    "output_root": "outputs"
+  }
+}
